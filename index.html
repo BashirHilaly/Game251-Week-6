@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.js"></script>
+    <title>Week 6 Assignment</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        // Define a second scene
+        const Menu = {
+
+            preload: function () {
+                // Additional preload for Scene2 if needed
+                this.load.image('background', 'assets/sky.png');
+            },
+            create: function () {
+                
+                // Add a background sprite
+
+                // Additional setup for Scene2
+                const textIntro = this.add.text(400, 100, 'Explore The Different Places!', {
+                    fontSize: '24px',
+                    fill: '#fff'
+                });
+                textIntro.setOrigin(0.5);
+                const text = this.add.text(400, 300, 'Press "1" for the Moon\nPress "2" for the Earth\nPress "3" for the Sun\nPress "4" for Venus', 
+                    {
+                        fontSize: '24px',
+                        fill: '#fff',
+                        align: 'center',
+                        lineSpacing: '10'
+                    }
+                );
+                text.setOrigin(0.5);
+
+                // Set up an event listener for the space key to go back to every scene
+                this.input.keyboard.on('keydown-ONE', function (event) {
+                    this.scene.start('Moon');
+                }, this);
+                this.input.keyboard.on('keydown-TWO', function (event) {
+                    this.scene.start('Earth');
+                }, this);
+                this.input.keyboard.on('keydown-THREE', function (event) {
+                    this.scene.start('Sun');
+                }, this);
+                this.input.keyboard.on('keydown-FOUR', function (event) {
+                    this.scene.start('Venus');
+                }, this);
+            },
+            update: function () {
+                // Additional updates for Scene2 if needed
+            }
+        };
+
+        // Define a second scene
+        const Earth = {
+            preload: function () {
+                // Additional preload for Scene2 if needed
+                this.load.image('Earth', 'assets/Dalle2EarthRender.png');
+            },
+            create: function () {
+                
+                // Add a background sprite
+                const background = this.add.sprite(0, 0, 'Earth').setOrigin(0, 0);
+
+                // Additional setup for Scene2
+                const text = this.add.text(400, 300, 'You are on the EARTH! - Press Space to Go Back', {
+                    fontSize: '24px',
+                    fill: '#fff'
+                });
+                text.setOrigin(0.5);
+
+                // Set up an event listener for the space key to go back to Scene1
+                this.input.keyboard.on('keydown-SPACE', function (event) {
+                    this.scene.start('Menu');
+                }, this);
+            },
+            update: function () {
+                // Additional updates for Scene2 if needed
+            }
+        };
+
+        const Sun = {
+            preload: function () {
+                // Additional preload for Scene2 if needed
+                this.load.image('Sun', 'assets/Dalle2SunRender.png');
+            },
+            create: function () {
+                
+                // Add a background sprite
+                const background = this.add.sprite(0, 0, 'Sun').setOrigin(0, 0);
+
+                // Additional setup for Scene2
+                const text = this.add.text(400, 300, 'You are on the SUN! - Press Space to Go Back', {
+                    fontSize: '24px',
+                    fill: '#fff'
+                });
+                text.setOrigin(0.5);
+
+                // Set up an event listener for the space key to go back to Scene1
+                this.input.keyboard.on('keydown-SPACE', function (event) {
+                    this.scene.start('Menu');
+                }, this);
+            },
+            update: function () {
+                // Additional updates for Scene2 if needed
+            }
+        };
+
+        const Venus = {
+            preload: function () {
+                // Additional preload for Scene2 if needed
+                this.load.image('Venus', 'assets/Dalle2VenusRender.png');
+            },
+            create: function () {
+                
+                // Add a background sprite
+                const background = this.add.sprite(0, 0, 'Venus').setOrigin(0, 0);
+
+                // Additional setup for Scene2
+                const text = this.add.text(400, 300, 'You are on VENUS! - Press Space to Go Back', {
+                    fontSize: '24px',
+                    fill: '#fff'
+                });
+                text.setOrigin(0.5);
+
+                // Set up an event listener for the space key to go back to Scene1
+                this.input.keyboard.on('keydown-SPACE', function (event) {
+                    this.scene.start('Menu');
+                }, this);
+            },
+            update: function () {
+                // Additional updates for Scene2 if needed
+            }
+        };
+
+        const Moon = {
+            preload: function () {
+                // Additional preload for Scene2 if needed
+                this.load.image('moon', 'assets/MoonRenderDalle2.png');
+            },
+            create: function () {
+                
+                // Add a background sprite
+                const background = this.add.sprite(0, 0, 'moon').setOrigin(0, 0);
+
+                // Additional setup for Scene2
+                const text = this.add.text(400, 300, 'You are on the MOON! - Press Space to Go Back', {
+                    fontSize: '24px',
+                    fill: '#fff'
+                });
+                text.setOrigin(0.5);
+
+                // Set up an event listener for the space key to go back to Scene1
+                this.input.keyboard.on('keydown-SPACE', function (event) {
+                    this.scene.start('Menu');
+                }, this);
+            },
+            update: function () {
+                // Additional updates for Scene2 if needed
+            }
+        };
+
+        // Create a new Phaser Game instance with a configuration object
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            scene: [Menu]
+        };
+
+        const game = new Phaser.Game(config);
+
+        // Add both scenes to the game
+        game.scene.add('Menu', Menu);
+        game.scene.add('Moon', Moon);
+        game.scene.add('Earth', Earth);
+        game.scene.add('Sun', Sun);
+        game.scene.add('Venus', Venus);
+
+        // Start the initial scene
+        game.scene.start('Menu');
+
+    </script>
+
+</body>
+</html>
